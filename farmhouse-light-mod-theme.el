@@ -1,153 +1,162 @@
 ;;; farmhouse-light-mod-theme.el --- Farmhouse Light Theme modded
 
-;; Copyright 2023 Rostislav Svoboda
+;; Copyright 2025 Rostislav Svoboda
 
 ;; Author: Rostislav Svoboda <Rostislav.Svoboda@gmail.com>
+;; Version: 1.1
+;; URL: https://github.com/Bost/farmhouse-light-mod-theme
 
 ;;; Commentary:
 
-;; Farmhouse Light Theme modded.
+;; Farmhouse Light Theme modded with Spacemacs-inspired enhancements.
 
 ;;; Code:
 
 (deftheme farmhouse-light-mod
-  "Farmhouse Light Theme modded.")
+  "Farmhouse Light Theme modded with Spacemacs-inspired enhancements.")
 
-;; See https://colorhunt.co/
+;; Color palette
+(defvar farmhouse-light-mod-colors
+  '((bg1         . "#ede9e7")
+    (bg2         . "#f6f2f3")
+    (bg3         . "#dedbd7")
+    (bg4         . "#d0cccc")
+    (fg1         . "#272b34")
+    (fg2         . "#495259")
+    (fg3         . "#7b8383")
+    (keyword     . "#941458")
+    (builtin     . "#124cd3")
+    (functions   . "#2c9f6b")
+    (type        . "#9e000d")
+    (const       . "#8cc610")
+    (comment     . "#7b8383")
+    (str         . "#4a8b0d")
+    (warning     . "#eea806")
+    (err         . "#ef001b")
+    (highlight   . "#e0e0e0")
+    (success     . "#8cc610")
+    (paren-match . "#1ee079")
+    (border      . "#9c9b95")
+    (cursor      . "#23cbfe")
+    (link        . "#124cd3")
+    (link-visited . "#941458")
+    (mode-line   . "#f6f2f3")
+    (mode-line-inactive . "#dedbd7")
+    (region      . "gray"))
+  "Color palette for Farmhouse Light Mod theme.")
 
-(custom-theme-set-variables
- 'farmhouse-light-mod
- '(ansi-color-names-vector ["#ede9e7" "#ef001b" "#8cc610" "#eea806" "#23cbfe" "#ec3691" "#1ee079" "#272b34"]))
+(defmacro farmhouse-light-mod-with-color-variables (&rest body)
+  "Bind the color palette around BODY."
+  (declare (indent 0))
+  `(let ((class '((class color) (min-colors 89)))
+         (let (,@(mapcar (lambda (cons)
+                           (list (intern (car cons)) (cdr cons)))
+                         farmhouse-light-mod-colors))
+           ,@body))))
 
-(custom-theme-set-faces
- 'farmhouse-light-mod
- '(bold ((((class color) (min-colors 24)) (:weight bold))))
- '(font-lock-builtin-face ((((class color) (min-colors 24)) (:foreground "#124cd3" :weight bold))))
- '(font-lock-comment-face ((((class color) (min-colors 24)) (:foreground "#7b8383"))))
- '(font-lock-comment-delimiter-face ((((class color) (min-colors 24)) (:foreground "#7b8383"))))
- '(font-lock-constant-face ((((class color) (min-colors 24)) (:foreground "#8cc610" :weight bold))))
- '(font-lock-function-name-face ((((class color) (min-colors 24)) (:foreground "#2c9f6b"))))
- '(font-lock-keyword-face ((((class color) (min-colors 24)) (:foreground "#941458"))))
- '(font-lock-negation-char-face ((((class color) (min-colors 24)) (:foreground "#ec3691"))))
- '(font-lock-preprocessor-face ((((class color) (min-colors 24)) (:foreground "#23cbfe"))))
- '(font-lock-regexp-grouping-construct ((((class color) (min-colors 24)) (:foreground "#1ee079"))))
- '(font-lock-regexp-grouping-backslash ((((class color) (min-colors 24)) (:foreground "#1ee079"))))
- '(font-lock-string-face ((((class color) (min-colors 24)) (:foreground "#4a8b0d"))))
- '(font-lock-type-face ((((class color) (min-colors 24)) (:foreground "#9e000d"))))
- '(font-lock-variable-name-face ((((class color) (min-colors 24)) (:foreground "#b7690a"))))
- '(font-lock-warning-face ((((class color) (min-colors 24)) (:foreground "#ec3691"))))
- '(success ((((class color) (min-colors 24)) (:foreground "#8cc610"))))
- '(warning ((((class color) (min-colors 24)) (:foreground "#eea806"))))
- '(error ((((class color) (min-colors 24)) (:foreground "#ef001b"))))
- '(match ((((class color) (min-colors 24)) (:background "#b7690a" :foreground "#272b34"))))
- '(iedit-occurrence ((((class color) (min-colors 24)) (:background "#dfd3c3" :foreground "#272b34" :weight bold))))
- '(isearch ((((class color) (min-colors 24)) (:background "#b7690a" :foreground "#272b34" :weight bold))))
- '(isearch-fail ((((class color) (min-colors 24)) (:background "#9e000d" :foreground "#272b34"))))
- '(lazy-highlight ((((class color) (min-colors 24)) (:background "#dedbd7"))))
- '(trailing-whitespace ((((class color) (min-colors 24)) (:background "#dedbd7"))))
- '(region ((((class color) (min-colors 24)) (:background "gray" :distant-foreground "black"))))
- '(highlight ((((class color) (min-colors 24)) (:background "#e0e0e0"))))
- '(hl-line ((((class color) (min-colors 89)) (:background "light gray"))))
- '(hl-line-inactive ((((class color) (min-colors 89)) (:background "gray"))))
- '(cursor ((((class color) (min-colors 24)) (:background "#23cbfe"))))
- '(fringe ((((class color) (min-colors 24)) (:background "#ede9e7"))))
- '(border ((((class color) (min-colors 24)) (:background "#ede9e7"))))
- '(vertical-border ((((class color) (min-colors 24)) (:foreground "#9c9b95"))))
- '(minibuffer-prompt ((((class color) (min-colors 24)) (:foreground "#124cd3"))))
- '(link ((((class color) (min-colors 24)) (:weight normal :underline t :foreground "#124cd3"))))
- '(link-visited ((((class color) (min-colors 24)) (:weight normal :underline t :foreground "#124cd3"))))
- '(mode-line ((((class color) (min-colors 24)) (:background "#f6f2f3" :foreground "#272b34"))))
- '(powerline-active1 ((((class color) (min-colors 24)) (:background "#dedbd7" :foreground "#495259"))))
- '(powerline-active2 ((((class color) (min-colors 24)) (:background "#dedbd7" :foreground "#495259"))))
- '(mode-line-inactive ((((class color) (min-colors 24)) (:inherit mode-line :foreground "#495259" :background "#dedbd7" :box nil))))
- '(powerline-inactive1 ((((class color) (min-colors 24)) (:background "#9c9b95" :foreground "#495259"))))
- '(powerline-inactive2 ((((class color) (min-colors 24)) (:background "#9c9b95" :foreground "#495259"))))
- '(popup-tip-face ((((class color) (min-colors 24)) (:background "#dedbd7" :foreground "#495259"))))
- '(company-tooltip ((((class color) (min-colors 24)) (:background "#dedbd7" :foreground "#495259"))))
- '(company-tooltip-selection ((((class color) (min-colors 24)) (:background "#f6f2f3" :foreground "#272b34"))))
- '(company-tooltip-annotation ((((class color) (min-colors 24)) (:background "#f6f2f3" :foreground "#272b34"))))
- '(company-tooltip-mouse ((((class color) (min-colors 24)) (:background "#dedbd7"))))
- '(company-tooltip-common ((((class color) (min-colors 24)) (:foreground "#124cd3"))))
- '(company-tooltip-common-selection ((((class color) (min-colors 24)) (:foreground "#23cbfe"))))
- '(company-scrollbar-fg ((((class color) (min-colors 24)) (:background "#7b8383"))))
- '(company-scrollbar-bg ((((class color) (min-colors 24)) (:background "#dedbd7"))))
- '(company-preview ((((class color) (min-colors 24)) (:background "#dedbd7"))))
- '(company-preview-common ((((class color) (min-colors 24)) (:background "#dedbd7" :foreground "#8cc610"))))
- '(diff-added ((((class color) (min-colors 24)) (:foreground "#8cc610"))))
- '(diff-changed ((((class color) (min-colors 24)) (:foreground "#eea806"))))
- '(diff-context ((((class color) (min-colors 24)) (:foreground "#495259"))))
- '(diff-file-header ((((class color) (min-colors 24)) (:foreground "#ec3691" :height 1.1 :weight bold))))
- '(diff-hunk-header ((((class color) (min-colors 24)) (:background "#dedbd7"))))
- '(diff-removed ((((class color) (min-colors 24)) (:foreground "#ef001b"))))
- '(helm-buffer-directory ((((class color) (min-colors 24)) (:foreground "#124cd3"))))
- '(helm-buffer-file ((((class color) (min-colors 24)) (:foreground "#272b34"))))
- '(helm-buffer-not-saved ((((class color) (min-colors 24)) (:foreground "#9e000d"))))
- '(helm-buffer-process ((((class color) (min-colors 24)) (:foreground "#b7690a"))))
- '(helm-buffer-saved-out ((((class color) (min-colors 24)) (:background "#eea806" :foreground "#272b34"))))
- '(helm-buffer-size ((((class color) (min-colors 24)) (:foreground "#7b8383"))))
- '(helm-candidate-number ((((class color) (min-colors 24)) (:foreground "#ec3691"))))
- '(helm-ff-directory ((((class color) (min-colors 24)) (:foreground "#124cd3"))))
- '(helm-ff-dotted-directory ((((class color) (min-colors 24)) (:foreground "#2c9f6b"))))
- '(helm-ff-executable ((((class color) (min-colors 24)) (:foreground "#941458"))))
- '(helm-ff-file ((((class color) (min-colors 24)) (:foreground "#272b34"))))
- '(helm-ff-invalid-symlink ((((class color) (min-colors 24)) (:foreground "#ef001b"))))
- '(helm-ff-symlink ((((class color) (min-colors 24)) (:foreground "#9e000d"))))
+;; Underline parentheses option
+(defcustom farmhouse-light-mod-underline-parens t
+  "If non-nil, underline matching parens when using `show-paren-mode' or similar."
+  :type 'boolean
+  :group 'farmhouse-light-mod-theme)
 
- '(helm-selection ((((class color) (min-colors 24)) (:background
-                                                     ;; "#23cbfe"
-                                                     "light gray"
-                                                     ;; "#e0e0e0"
-                                                     ))))
- '(helm-selection-line ((((class color) (min-colors 24)) (:background
-                                                          ;; "#23cbfe"
-                                                          "light gray"
-                                                          ;; "#e0e0e0"
-                                                          ))))
+;; Theme setup
+(farmhouse-light-mod-with-color-variables
+ (custom-theme-set-variables
+  'farmhouse-light-mod
+  `(ansi-color-names-vector [,bg4 ,err ,success ,warning ,builtin ,functions ,type ,fg1]))
 
- '(helm-separator ((((class color) (min-colors 24)) (:foreground "#eea806"))))
- '(helm-source-header ((((class color) (min-colors 24)) (:weight bold :height 1.3 :family "Sans Serif"))))
- '(org-block ((((class color) (min-colors 24)) (:background "#dedbd7"))))
- '(org-block-begin-line ((((class color) (min-colors 24)) (:background "#dedbd7" :foreground "#7b8383"))))
- '(org-block-end-line ((((class color) (min-colors 24)) (:background "#dedbd7" :foreground "#7b8383"))))
- '(org-date ((((class color) (min-colors 24)) (:forefound "#2c9f6b"))))
- '(org-footnote ((((class color) (min-colors 24)) (:foreground "#1ee079" :slant italic :underline t))))
- '(org-hide ((((class color) (min-colors 24)) (:foreground "#dedbd7"))))
- '(org-level-1 ((((class color) (min-colors 24)) (:weight bold :height 1.2 :foreground "#4a8b0d"))))
- '(org-level-2 ((((class color) (min-colors 24)) (:weight bold :height 1.1 :foreground "#2c9f6b"))))
- '(org-level-3 ((((class color) (min-colors 24)) (:weight bold :foreground "#124cd3"))))
- '(org-level-4 ((((class color) (min-colors 24)) (:weight bold :foreground "#941458"))))
- '(org-level-5 ((((class color) (min-colors 24)) (:weight bold :foreground "#b7690a"))))
- '(org-level-6 ((((class color) (min-colors 24)) (:weight bold :slant italic :foreground "#4a8b0d"))))
- '(org-level-7 ((((class color) (min-colors 24)) (:weight bold :slant italic :foreground "#2c9f6b"))))
- '(org-level-8 ((((class color) (min-colors 24)) (:weight bold :foreground "#124cd3"))))
- '(org-link ((((class color) (min-colors 24)) (:weight normal :underline t :foreground "#124cd3"))))
- '(org-list-dt ((((class color) (min-colors 24)) (:weight bold :slant italic))))
- '(org-special-keyword ((((class color) (min-colors 24)) (:foreground "#b7690a" :weight bold))))
- '(org-target ((((class color) (min-colors 24)) (:foreground "#495259" :underline t :weight bold))))
- '(org-table ((((class color) (min-colors 24)) (:foreground "#495259"))))
- '(org-todo ((((class color) (min-colors 24)) (:foreground "#9e000d" :weight bold))))
- '(outline-1 ((((class color) (min-colors 24)) (:weight bold :height 1.2 :foreground "#4a8b0d"))))
- '(outline-2 ((((class color) (min-colors 24)) (:weight bold :height 1.1 :foreground "#2c9f6b"))))
- '(outline-3 ((((class color) (min-colors 24)) (:weight bold :foreground "#124cd3"))))
- '(outline-4 ((((class color) (min-colors 24)) (:weight bold :foreground "#941458"))))
- '(outline-5 ((((class color) (min-colors 24)) (:weight bold :foreground "#b7690a"))))
- '(outline-6 ((((class color) (min-colors 24)) (:weight bold :slant italic :foreground "#4a8b0d"))))
- '(outline-7 ((((class color) (min-colors 24)) (:weight bold :slant italic :foreground "#2c9f6b"))))
- '(outline-8 ((((class color) (min-colors 24)) (:weight bold :foreground "#124cd3"))))
- '(show-paren-match ((((class color) (min-colors 24)) (:background "#1ee079"))))
- '(show-paren-mismatch ((((class color) (min-colors 24)) (:background "#ef001b"))))
- '(rainbow-delimiters-depth-1-face ((((class color) (min-colors 24)) (:foreground "#272b34"))))
- '(rainbow-delimiters-depth-2-face ((((class color) (min-colors 24)) (:foreground "#495259"))))
- '(rainbow-delimiters-depth-6-face ((((class color) (min-colors 24)) (:foreground "#b7690a"))))
- '(rainbow-delimiters-depth-4-face ((((class color) (min-colors 24)) (:foreground "#4a8b0d"))))
- '(rainbow-delimiters-depth-5-face ((((class color) (min-colors 24)) (:foreground "#2c9f6b"))))
- '(rainbow-delimiters-depth-6-face ((((class color) (min-colors 24)) (:foreground "#124cd3"))))
- '(rainbow-delimiters-depth-9-face ((((class color) (min-colors 24)) (:foreground "#941458"))))
- '(rainbow-delimiters-depth-8-face ((((class color) (min-colors 24)) (:foreground "#eea806"))))
- '(rainbow-delimiters-depth-9-face ((((class color) (min-colors 24)) (:foreground "#8cc610"))))
- '(rainbow-delimiters-mismatched-face ((((class color) (min-colors 24)) (:background "#ef001b"))))
- '(rainbow-delimiters-unmatched-face ((((class color) (min-colors 24)) (:background "#ef001b"))))
- '(default ((((class color) (min-colors 24)) (:background "#ede9e7" :foreground "#272b34")))))
+ (custom-theme-set-faces
+  'farmhouse-light-mod
+  ;; Basic faces
+  `(default ((,class (:background ,bg1 :foreground ,fg1))))
+
+  ;; Syntax highlighting
+  `(font-lock-builtin-face ((,class (:foreground ,builtin :weight bold))))
+  `(font-lock-comment-face ((,class (:foreground ,comment))))
+  `(font-lock-comment-delimiter-face ((,class (:foreground ,comment))))
+  `(font-lock-constant-face ((,class (:foreground ,const :weight bold))))
+  `(font-lock-function-name-face ((,class (:foreground ,functions))))
+  `(font-lock-keyword-face ((,class (:foreground ,keyword))))
+  `(font-lock-string-face ((,class (:foreground ,str))))
+  `(font-lock-type-face ((,class (:foreground ,type))))
+  `(font-lock-variable-name-face ((,class (:foreground ,type))))
+  `(font-lock-warning-face ((,class (:foreground ,warning))))
+
+  ;; UI elements
+  `(cursor ((,class (:background ,cursor))))
+  `(fringe ((,class (:background ,bg1))))
+  `(hl-line ((,class (:background ,bg2))))
+  `(region ((,class (:background ,region :distant-foreground "black"))))
+  `(minibuffer-prompt ((,class (:foreground ,builtin))))
+  `(vertical-border ((,class (:foreground ,border))))
+  `(link ((,class (:weight normal :underline t :foreground ,link))))
+  `(link-visited ((,class (:weight normal :underline t :foreground ,link-visited))))
+
+  ;; Mode line
+  `(mode-line ((,class (:background ,mode-line :foreground ,fg1 :box (:color ,border :line-width 1)))))
+  `(mode-line-inactive ((,class (:background ,mode-line-inactive :foreground ,fg2 :box (:color ,border :line-width 1)))))
+  `(powerline-active1 ((,class (:background ,mode-line-inactive :foreground ,fg2))))
+  `(powerline-active2 ((,class (:background ,mode-line-inactive :foreground ,fg2))))
+  `(powerline-inactive1 ((,class (:background ,bg4 :foreground ,fg2))))
+  `(powerline-inactive2 ((,class (:background ,bg4 :foreground ,fg2))))
+
+  ;; Paren matching (Spacemacs-inspired enhancement)
+  `(show-paren-match ((,class (:background ,paren-match
+                                           :foreground ,bg1
+                                           :underline ,(when farmhouse-light-mod-underline-parens t)))))
+  `(show-paren-mismatch ((,class (:background ,err
+                                              :foreground ,bg1
+                                              :underline ,(when farmhouse-light-mod-underline-parens t)))))
+
+  ;; Search and matching
+  `(isearch ((,class (:background ,warning :foreground ,bg1 :weight bold))))
+  `(lazy-highlight ((,class (:background ,bg3))))
+  `(match ((,class (:background ,type :foreground ,bg1))))
+  `(trailing-whitespace ((,class :background ,err)))
+
+  ;; Org-mode
+  `(org-block ((,class (:background ,bg3))))
+  `(org-block-begin-line ((,class (:background ,bg3 :foreground ,fg3))))
+  `(org-block-end-line ((,class (:background ,bg3 :foreground ,fg3))))
+  `(org-level-1 ((,class (:weight bold :height 1.2 :foreground ,str))))
+  `(org-level-2 ((,class (:weight bold :height 1.1 :foreground ,functions))))
+  `(org-level-3 ((,class (:weight bold :foreground ,builtin))))
+  `(org-level-4 ((,class (:weight bold :foreground ,keyword))))
+  `(org-link ((,class (:weight normal :underline t :foreground ,link))))
+  `(org-todo ((,class (:foreground ,err :weight bold))))
+
+  ;; Company
+  `(company-tooltip ((,class (:background ,bg3 :foreground ,fg2))))
+  `(company-tooltip-selection ((,class (:background ,bg2 :foreground ,fg1))))
+  `(company-tooltip-common ((,class (:foreground ,builtin))))
+  `(company-scrollbar-bg ((,class (:background ,bg3))))
+  `(company-scrollbar-fg ((,class (:background ,fg3))))
+
+  ;; Helm
+  `(helm-selection ((,class (:background ,bg3))))
+  `(helm-buffer-directory ((,class (:foreground ,builtin))))
+  `(helm-buffer-file ((,class (:foreground ,fg1))))
+  `(helm-ff-directory ((,class (:foreground ,builtin))))
+  `(helm-ff-file ((,class (:foreground ,fg1))))
+
+  ;; Rainbow delimiters
+  `(rainbow-delimiters-depth-1-face ((,class (:foreground ,fg1))))
+  `(rainbow-delimiters-depth-2-face ((,class (:foreground ,fg2))))
+  `(rainbow-delimiters-depth-3-face ((,class (:foreground ,str))))
+  `(rainbow-delimiters-depth-4-face ((,class (:foreground ,functions))))
+  `(rainbow-delimiters-depth-5-face ((,class (:foreground ,builtin))))
+  `(rainbow-delimiters-mismatched-face ((,class (:background ,err))))
+  `(rainbow-delimiters-unmatched-face ((,class (:background ,err))))
+
+  ;; Others
+  `(success ((,class (:foreground ,success))))
+  `(warning ((,class (:foreground ,warning))))
+  `(error ((,class (:foreground ,err))))
+  `(highlight ((,class (:background ,highlight))))
+  `(line-number ((,class (:foreground ,fg3 :background ,bg1))))
+  `(line-number-current-line ((,class (:foreground ,fg1 :background ,bg1))))
+  ))
 
 ;;;###autoload
 (when load-file-name

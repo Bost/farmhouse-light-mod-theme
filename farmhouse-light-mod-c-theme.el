@@ -1,4 +1,4 @@
-;;; farmhouse-light-mod-theme.el --- Farmhouse Light Theme modded (with Spacemacs enhancements)
+;;; farmhouse-light-mod-c-theme.el --- Farmhouse Light Theme modded (with Spacemacs enhancements)
 
 ;; Copyright 2025 Rostislav Svoboda
 
@@ -12,11 +12,11 @@
 
 ;;; Code:
 
-(deftheme farmhouse-light-mod
+(deftheme farmhouse-light-mod-c
   "Farmhouse Light Theme modded with Spacemacs Light-enhancements.")
 
 (custom-theme-set-variables
- 'farmhouse-light-mod
+ 'farmhouse-light-mod-c
  ;; ansi-color-names-vector is obsolete since Emacs 28.1
  '["#ede9e7" "#ef001b" "#8cc610" "#eea806" "#23cbfe" "#ec3691" "#1ee079" "#272b34"])
 
@@ -41,7 +41,7 @@
 '(pdf-view-midnight-colors '("#272b34" . "#ede9e7"))
 
 (custom-theme-set-faces
- 'farmhouse-light-mod
+ 'farmhouse-light-mod-c
 
  ;; Basic faces
  '(bold ((((class color) (min-colors 24)) (:weight bold))))
@@ -282,4 +282,4 @@
   (add-to-list 'custom-theme-load-path
                (file-name-as-directory (file-name-directory load-file-name))))
 
-(provide-theme 'farmhouse-light-mod)
+(provide-theme 'farmhouse-light-mod-c)

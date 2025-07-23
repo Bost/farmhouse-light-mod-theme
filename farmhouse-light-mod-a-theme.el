@@ -95,13 +95,13 @@
 
  '(helm-selection ((((class color) (min-colors 24)) (:background
                                                      ;; "#23cbfe"
-                                                     "light gray"
-                                                     ;; "#e0e0e0"
+                                                     ;; "light gray"
+                                                     "#e0e0e0"
                                                      ))))
  '(helm-selection-line ((((class color) (min-colors 24)) (:background
                                                           ;; "#23cbfe"
-                                                          "light gray"
-                                                          ;; "#e0e0e0"
+                                                          ;; "light gray"
+                                                          "#e0e0e0"
                                                           ))))
 
  '(helm-separator ((((class color) (min-colors 24)) (:foreground "#eea806"))))
@@ -134,8 +134,12 @@
  '(outline-6 ((((class color) (min-colors 24)) (:weight bold :slant italic :foreground "#4a8b0d"))))
  '(outline-7 ((((class color) (min-colors 24)) (:weight bold :slant italic :foreground "#2c9f6b"))))
  '(outline-8 ((((class color) (min-colors 24)) (:weight bold :foreground "#124cd3"))))
- '(show-paren-match ((((class color) (min-colors 24)) (:background "#1ee079"))))
+
+ ;; Show-paren and smartparens
+ '(show-paren-match ((((class color) (min-colors 24)) (:foreground "#1ee079"))))
  '(show-paren-mismatch ((((class color) (min-colors 24)) (:background "#ef001b"))))
+ '(sp-show-pair-match-face ((((class color) (min-colors 24)) (:box (:line-width 1 :color "black")))))
+
  '(rainbow-delimiters-depth-1-face ((((class color) (min-colors 24)) (:foreground "#272b34"))))
  '(rainbow-delimiters-depth-2-face ((((class color) (min-colors 24)) (:foreground "#495259"))))
  '(rainbow-delimiters-depth-6-face ((((class color) (min-colors 24)) (:foreground "#b7690a"))))
@@ -147,7 +151,8 @@
  '(rainbow-delimiters-depth-9-face ((((class color) (min-colors 24)) (:foreground "#8cc610"))))
  '(rainbow-delimiters-mismatched-face ((((class color) (min-colors 24)) (:background "#ef001b"))))
  '(rainbow-delimiters-unmatched-face ((((class color) (min-colors 24)) (:background "#ef001b"))))
- '(default ((((class color) (min-colors 24)) (:background "#ede9e7" :foreground "#272b34")))))
+ '(default ((((class color) (min-colors 24)) (:background "#ede9e7" :foreground "#272b34"))))
+ )
 
 ;;;###autoload
 (when load-file-name

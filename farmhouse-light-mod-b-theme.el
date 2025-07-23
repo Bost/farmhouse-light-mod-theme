@@ -52,20 +52,39 @@
 ;; Theme setup
 (custom-theme-set-variables
  'farmhouse-light-mod-b
- `(ansi-color-names-vector [farmhouse-light-mod-b-bg4
-                            farmhouse-light-mod-b-err
-                            farmhouse-light-mod-b-success
-                            farmhouse-light-mod-b-warning
-                            farmhouse-light-mod-b-builtin
-                            farmhouse-light-mod-b-functions
-                            farmhouse-light-mod-b-type
-                            farmhouse-light-mod-b-fg1]))
+ `(ansi-color-normal-colors-vector
+   [farmhouse-light-mod-b-bg4
+    farmhouse-light-mod-b-err
+    farmhouse-light-mod-b-success
+    farmhouse-light-mod-b-warning
+    farmhouse-light-mod-b-builtin
+    farmhouse-light-mod-b-functions
+    farmhouse-light-mod-b-type
+    farmhouse-light-mod-b-fg1]))
 
 (custom-theme-set-faces
  'farmhouse-light-mod-b
  ;; Basic faces
- `(default ((t (:background ,farmhouse-light-mod-b-bg1
-                            :foreground ,farmhouse-light-mod-b-fg1))))
+ ;; `(default ((t (:background ,farmhouse-light-mod-b-bg1
+ ;;                            :foreground ,farmhouse-light-mod-b-fg1))))
+
+ ;; `(default ((t (:background ,farmhouse-light-mod-b-bg1
+ ;;                            :foreground ,farmhouse-light-mod-b-fg1
+ ;;                            :inherit default))))
+
+ ;; `(default ((t :background ,(or farmhouse-light-mod-b-bg1 'unspecified)
+ ;;               :foreground ,(or farmhouse-light-mod-b-fg1 'unspecified)
+ ;;               :inherit default)))
+
+ ;; (or (face-background 'centaur-tabs-default) (face-background 'default)
+
+ `(default ((t (:inherit nil
+                         :extend nil :stipple nil
+                         :background ,farmhouse-light-mod-b-bg1
+                         :foreground ,farmhouse-light-mod-b-fg1
+                         :inverse-video nil :box nil :strike-through nil :overline nil :underline nil
+                         :slant normal :weight regular :height 158 :width normal :foundry "ADBO" :family "Source Code Pro"
+                         ))))
 
  ;; Syntax highlighting
  `(font-lock-builtin-face ((t (:foreground ,farmhouse-light-mod-b-builtin :weight bold))))

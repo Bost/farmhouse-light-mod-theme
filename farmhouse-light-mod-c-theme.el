@@ -17,28 +17,30 @@
 
 (custom-theme-set-variables
  'farmhouse-light-mod-c
- ;; ansi-color-names-vector is obsolete since Emacs 28.1
- '["#ede9e7" "#ef001b" "#8cc610" "#eea806" "#23cbfe" "#ec3691" "#1ee079" "#272b34"])
+ '(ansi-color-normal-colors-vector
+   ;; ansi-color-names-vector ; is obsolete since Emacs 28.1
+   ["#ede9e7" "#ef001b" "#8cc610" "#eea806" "#23cbfe" "#ec3691" "#1ee079" "#272b34"])
 
-;; Additional theme variables
-'(hl-todo-keyword-faces '(("TODO"        . "#eea806")
-                          ("NEXT"        . "#eea806")
-                          ("THEM"        . "#1ee079")
-                          ("PROG"        . "#124cd3")
-                          ("OKAY"        . "#124cd3")
-                          ("DONT"        . "#ef001b")
-                          ("FAIL"        . "#ef001b")
-                          ("DONE"        . "#8cc610")
-                          ("NOTE"        . "#eea806")
-                          ("KLUDGE"      . "#eea806")
-                          ("HACK"        . "#eea806")
-                          ("TEMP"        . "#eea806")
-                          ("FIXME"       . "#eea806")
-                          ("XXX"         . "#eea806")
-                          ("???+"        . "#eea806")))
-'(org-fontify-done-headline nil)
-'(org-fontify-todo-headline nil)
-'(pdf-view-midnight-colors '("#272b34" . "#ede9e7"))
+ ;; Additional theme variables
+ '(hl-todo-keyword-faces '(("TODO"        . "#eea806")
+                           ("NEXT"        . "#eea806")
+                           ("THEM"        . "#1ee079")
+                           ("PROG"        . "#124cd3")
+                           ("OKAY"        . "#124cd3")
+                           ("DONT"        . "#ef001b")
+                           ("FAIL"        . "#ef001b")
+                           ("DONE"        . "#8cc610")
+                           ("NOTE"        . "#eea806")
+                           ("KLUDGE"      . "#eea806")
+                           ("HACK"        . "#eea806")
+                           ("TEMP"        . "#eea806")
+                           ("FIXME"       . "#eea806")
+                           ("XXX"         . "#eea806")
+                           ("???+"        . "#eea806")))
+ '(org-fontify-done-headline nil)
+ '(org-fontify-todo-headline nil)
+ '(pdf-view-midnight-colors '("#272b34" . "#ede9e7"))
+ )
 
 (custom-theme-set-faces
  'farmhouse-light-mod-c
